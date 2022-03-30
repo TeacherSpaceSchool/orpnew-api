@@ -9,11 +9,11 @@ module.exports.addReserv = async () => {
                 name: 'Резерв',
                 guid: 'lol'
             });
-            await Region.create(find);
+            find = await Region.create(find);
             find = new Point({
                 name: 'Резерв',
                 guid: 'lol',
-                region: 'Резерв',
+                region: find._id,
                 guidRegion: 'lol'
             });
             await Point.create(find);
