@@ -1,0 +1,8 @@
+node_modules/
+public/images/*
+public/thumbnail/*
+public/files/*
+public/xlsx/*
+.idea/
+integrate1Cshoro.log
+error.log
