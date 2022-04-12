@@ -32,7 +32,7 @@ const mutation = `
 
 const resolvers = {
     organizator: async(parent, {_id}, {user}) => {
-        if(['admin', 'организатор', 'реализатор'].includes(user.role)) {
+        if(['admin', 'организатор', 'реализатор', 'главинспектор', 'инспектор'].includes(user.role)) {
             return await Organizator.findOne({
                 ...'реализатор'===user.role?{region: user.region}:{},
                 ...user.role==='организатор'?{user: user._id}:{$or: [{_id}, {region: _id}]}

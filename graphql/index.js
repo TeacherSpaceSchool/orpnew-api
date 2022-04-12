@@ -16,6 +16,9 @@ const OtchetOrganizatora = require('./otchetOrganizatora');
 const OtchetRealizatora = require('./otchetRealizatora');
 const Passport = require('./passport');
 const Plan = require('./plan');
+const Inspector = require('./inspector');
+const ActInspector = require('./actInspector');
+const ChecklistInspector = require('./checklistInspector');
 const Point = require('./point');
 const GeoPoint = require('./geoPoint');
 const Tara = require('./tara');
@@ -45,6 +48,9 @@ const typeDefs = gql`
     ${OtchetOrganizatora.type}
     ${GeoPoint.type}
     ${Plan.type}
+    ${Inspector.type}
+    ${ActInspector.type}
+    ${ChecklistInspector.type}
     ${OtchetRealizatora.type}
     ${Faq.type}
     ${Point.type}
@@ -66,6 +72,9 @@ const typeDefs = gql`
         ${GeoPoint.mutation}
         ${OtchetRealizatora.mutation}
         ${Plan.mutation}
+        ${Inspector.mutation}
+        ${ChecklistInspector.mutation}
+        ${ActInspector.mutation}
         ${File.mutation}
         ${Realizator.mutation}
         ${Faq.mutation}
@@ -84,6 +93,9 @@ const typeDefs = gql`
         ${OtchetOrganizatora.query}
         ${GeoPoint.query}
         ${Plan.query}
+        ${ActInspector.query}
+        ${ChecklistInspector.query}
+        ${Inspector.query}
         ${OtchetRealizatora.query}
         ${Faq.query}
         ${Point.query}
@@ -126,6 +138,9 @@ const resolvers = {
         ...OtchetOrganizatora.resolvers,
         ...GeoPoint.resolvers,
         ...Plan.resolvers,
+        ...Inspector.resolvers,
+        ...ActInspector.resolvers,
+        ...ChecklistInspector.resolvers,
         ...OtchetRealizatora.resolvers,
         ...Faq.resolvers,
         ...Point.resolvers,
@@ -148,6 +163,9 @@ const resolvers = {
         ...OtchetOrganizatora.resolversMutation,
         ...GeoPoint.resolversMutation,
         ...Plan.resolversMutation,
+        ...Inspector.resolversMutation,
+        ...ActInspector.resolversMutation,
+        ...ChecklistInspector.resolversMutation,
         ...OtchetRealizatora.resolversMutation,
         ...Faq.resolversMutation,
         ...Realizator.resolversMutation,

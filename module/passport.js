@@ -5,6 +5,7 @@ const ExtractJwt = require('passport-jwt').ExtractJwt;
 const jwtsecret = '@615141ViDiK141516@';
 const User = require('../models/user');
 const Organizator = require('../models/organizator');
+const Inspector = require('../models/inspector');
 const Realizator = require('../models/realizator');
 //const { setProfile, getProfile } = require('../redis/profile');
 const jwt = require('jsonwebtoken');
@@ -87,6 +88,9 @@ const verifydeuserGQL = async (req, res) => {
                     user.point = realizator.point._id
                     user.namePoint = realizator.point.name
                     user.guidPoint = realizator.guidPoint
+                }
+                else if('инспектор'===user.role) {
+                    user.inspector = (await Inspector.findOne({user: user._id}).select('_id').lean())._id
                 }
                 resolve(user)
             }

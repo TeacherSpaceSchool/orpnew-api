@@ -32,7 +32,7 @@ const mutation = `
 
 const resolvers = {
     realizator: async(parent, {_id}, {user}) => {
-        if(['admin', 'организатор', 'реализатор'].includes(user.role)) {
+        if(['admin', 'организатор', 'реализатор', 'главинспектор', 'инспектор'].includes(user.role)) {
             return await Realizator.findOne({
                 ...user.region?{$or: [{region: user.region}, {guidRegion: 'lol'}]}:{},
                 ...'реализатор'===user.role?{_id: user.realizator}:{$or: [{_id}, {point: _id}]}
@@ -50,7 +50,7 @@ const resolvers = {
         }
     },
     realizators: async(parent, {skip, region, point, search, limit}, {user}) => {
-        if(['admin', 'организатор'].includes(user.role)) {
+        if(['admin', 'организатор', 'главинспектор', 'инспектор'].includes(user.role)) {
             return await Realizator.find({
                 del: {$ne: true},
                 ...user.region?{$or: [{region: user.region}, {guidRegion: 'lol'}]}:{},

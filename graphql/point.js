@@ -32,7 +32,7 @@ const resolvers = {
         }
     },
     points: async(parent, {skip, region, search, free}, {user}) => {
-        if(['admin', 'организатор'].includes(user.role)) {
+        if(['admin', 'организатор', 'главинспектор', 'инспектор'].includes(user.role)) {
             let used
             if(free)
                 used = await Realizator.find({

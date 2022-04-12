@@ -6,7 +6,9 @@ const path = require('path');
 const urlMain = `${process.env.URL.trim()}:3000`,
     adminLogin = 'admin',
     skip = 50,
-    adminPass = 'pE48hS'
+    adminPass = 'pE48hS',
+    mainInspectorLogin = 'maininspector',
+    mainInspectorPass = 'dVIE4A'
 
 module.exports.weekDay = [
     'BC',
@@ -124,5 +126,7 @@ module.exports.pdDDMMYYHHMM = pdDDMMYYHHMM;
 module.exports.skip = skip;
 module.exports.adminPass = adminPass;
 module.exports.adminLogin = adminLogin;
+module.exports.mainInspectorPass = mainInspectorPass;
+module.exports.mainInspectorLogin = mainInspectorLogin;
 module.exports.urlMain = urlMain;
 module.exports.checkFloat = checkFloat;

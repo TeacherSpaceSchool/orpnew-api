@@ -24,7 +24,7 @@ const mutation = `
 
 const resolvers = {
     blogs: async(parent, {search, skip}, {user}) => {
-        if(['admin', 'реализатор', 'организатор'].includes(user.role)) {
+        if(user.role) {
             return await Blog.find({
                 ...search?{title: {'$regex': search, '$options': 'i'}}:{}
             })
