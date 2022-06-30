@@ -56,9 +56,35 @@ let startCheckVTime = async () => {
     }
 }
 
+let startTelegram = async () => {
+    if(isMainThread) {
+        let w = new Worker('./thread/telegram.js', {workerData: 0});
+        w.on('message', (msg) => {
+            console.log('Telegram: '+msg);
+        })
+        w.on('error', async (error)=>{
+            let err = ''
+            if(error&&error.message)
+                err = error.message
+            console.error(error)
+            let object = new ModelsError({
+                err: err,
+                path: 'Telegram'
+            });
+            await ModelsError.create(object)
+        });
+        w.on('exit', (code) => {
+            if(code !== 0)
+                console.error(new Error(`Telegram stopped with exit code ${code}`))
+        });
+        console.log('Telegram '+w.threadId+ ' run')
+    }
+}
+
 let start = async () => {
     await createAdmin();
     await startCheckVTime();
+    await startTelegram();
     await startReminderClient();
     await addReserv();
     await reductionToPoint();
