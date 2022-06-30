@@ -84,7 +84,10 @@ let startTelegram = async () => {
 let start = async () => {
     await createAdmin();
     await startCheckVTime();
-    await startTelegram();
+
+    if(process.env.URL.trim()==='https://orp-shoro.site')
+        await startTelegram();
+
     await startReminderClient();
     await addReserv();
     await reductionToPoint();

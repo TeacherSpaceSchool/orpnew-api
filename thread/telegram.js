@@ -60,8 +60,11 @@ if(!isMainThread) {
                         }
                     }
                 }
-                if(groupId)
-                    await client.sendMessage(groupId, {message: `Сигнал!!!\n${message.media?'Изображение':''}\n${message.message?JSON.stringify(message.message):''}`});
+                if(groupId){
+                    setTimeout(async ()=>{
+                        await client.sendMessage(groupId, {message: `Сигнал!!!\n${message.media?'Изображение':''}\n${message.message?JSON.stringify(message.message):''}`});
+                    }, 1000)
+                }
             }
             client.addEventHandler(newMessageEvent, new NewMessage({}));
 
